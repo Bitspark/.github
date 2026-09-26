@@ -51,7 +51,9 @@ const ignored = (path) => ignore.some((pattern) => pattern.includes('*')
 // The snapshot is the list of names, not prose about them.
 const own = relative(root, snapshot).split(sep).join('/');
 const files = execFileSync('git', ['ls-files', '-z'], { cwd: root, encoding: 'utf8', maxBuffer: 1 << 30 }).split('\0')
-  .filter((path) => /\.(md|mdx|markdown|txt|rst)$/i.test(path) && path !== own && !ignored(path));
+  .filter((path) => /\.(md|mdx|markdown|txt|rst)$/i.test(path) && path !== own && !ignored(path))
+  // Build and dependency files that end in .txt are code, not prose.
+  .filter((path) => !/(^|\/)(CMakeLists|requirements[^/]*|constraints)\.txt$/i.test(path));
 
 // Blank out what is not prose: inline code, link targets, URLs and HTML tags.
 // Identifiers and addresses follow their own rules; a path that names a
