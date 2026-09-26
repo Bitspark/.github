@@ -26,7 +26,7 @@ const ordinaryWords = new Set([
 ]);
 
 if (process.argv.includes('--update')) {
-  const listed = JSON.parse(execFileSync('gh', ['repo', 'list', 'Bitspark', '--limit', '1000', '--json', 'name,isFork'], { encoding: 'utf8' }));
+  const listed = JSON.parse(execFileSync('gh', ['repo', 'list', 'Bitspark', '--limit', '1000', '--json', 'name,isFork'], { encoding: 'utf8', maxBuffer: 1 << 30 }));
   // A fork carries its upstream project's name, which that project spells.
   const names = listed.filter((r) => !r.isFork).map((r) => r.name).sort((a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' }));
   writeFileSync(snapshot, `# Bitspark repository names, excluding forks. Refresh: node naming.mjs --update\n${names.join('\n')}\n`);
@@ -50,7 +50,7 @@ const ignored = (path) => ignore.some((pattern) => pattern.includes('*')
 
 // The snapshot is the list of names, not prose about them.
 const own = relative(root, snapshot).split(sep).join('/');
-const files = execFileSync('git', ['ls-files', '-z'], { cwd: root, encoding: 'utf8' }).split('\0')
+const files = execFileSync('git', ['ls-files', '-z'], { cwd: root, encoding: 'utf8', maxBuffer: 1 << 30 }).split('\0')
   .filter((path) => /\.(md|mdx|markdown|txt|rst)$/i.test(path) && path !== own && !ignored(path));
 
 // Blank out what is not prose: inline code, link targets, URLs and HTML tags.
