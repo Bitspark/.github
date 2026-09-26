@@ -47,7 +47,7 @@ bb-provision
 bb-trust
 bb-vault
 bb2
-BIoT
+biot
 bit-services-contract
 bitagent-accounts
 bitagent-blackboard
@@ -70,8 +70,9 @@ bitagent-runtime-legacy
 bitagent-vault
 bitagent-website
 bitbooks
+bitcube
 bitlink
-BitMachine
+bitmachine
 bitnode
 bitnode-js
 bitnode-old
@@ -107,7 +108,7 @@ codeless-server
 computehub
 constellation
 corpus
-Crossproduct
+crossproduct
 cursus
 decisionmaker
 defs-anchor
@@ -141,7 +142,7 @@ frozen-thoughts
 go-bitlink
 go-bitnode-legacy
 go-blank-sparkable
-Go-LiquidScript
+go-liquidscript
 go-llm
 go-tree
 go-tree_old
@@ -154,7 +155,7 @@ harmos-lab
 healthdati-design
 healthdati.net
 hgm-personio
-HLTE
+hlte
 horos
 iot-dht
 izinyoka
@@ -200,7 +201,7 @@ repo-tools
 reveng
 schema
 semantic-history
-SHELM
+shelm
 shelm_archive
 skopos
 slang
@@ -228,7 +229,7 @@ slang-usage
 slang-vision
 slang-website
 space-lab
-Stack
+stack
 stele
 tabula
 taxis
@@ -249,7 +250,7 @@ tree-lab
 tree-sitter-markdown
 types-gomod
 vylang-server
-Vyze
+vyze
 vyze-js
 vyze-js-cli
 vyze-modeler

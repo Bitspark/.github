@@ -3,7 +3,8 @@
 ## The rule
 
 **A Bitspark project is written exactly as its GitHub repository is named,
-character for character, everywhere.**
+character for character, everywhere.** Every Bitspark repository name is
+lowercase, so every Bitspark project name is lowercase.
 
 "Everywhere" covers prose, headings, titles, the first word of a sentence,
 issue and pull-request titles, commit messages, code comments, log and error
@@ -17,9 +18,15 @@ text, user-interface text, and package and module names.
 | bitsystem3 | `Bit System 3`, `BitSystem3` |
 | logos-db | `Logos DB`, `LogosDB`, `Logos-db` |
 | bitwire-svc | `Bitwire Service` |
-| BitMachine | `bitmachine`: a repository named with capitals keeps them |
+| bitmachine | `BitMachine` |
 
 The organization is written as GitHub writes it: **Bitspark**.
+
+**A new repository is named in lowercase.** Use letters, digits and hyphens. The
+rule above then gives its prose name with no further choice. The eight
+repositories that once had capitals (`BitMachine`, `Stack`, `SHELM`, `BIoT`,
+`Crossproduct`, `Go-LiquidScript`, `Vyze`, `HLTE`) were renamed to lowercase on
+26 September 2026; GitHub redirects their old addresses.
 
 ## Why
 
