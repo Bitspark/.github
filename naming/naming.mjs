@@ -11,7 +11,7 @@
 // is a path prefix or a glob with `*`, and `#` starts a comment.
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, statSync, writeFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { dirname, join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -48,8 +48,10 @@ const ignored = (path) => ignore.some((pattern) => pattern.includes('*')
   ? new RegExp(`^${pattern.split('*').map((p) => p.replace(/[.+?^${}()|[\]\\]/g, '\\$&')).join('.*')}$`).test(path)
   : path === pattern || path.startsWith(pattern.endsWith('/') ? pattern : `${pattern}/`));
 
+// The snapshot is the list of names, not prose about them.
+const own = relative(root, snapshot).split(sep).join('/');
 const files = execFileSync('git', ['ls-files', '-z'], { cwd: root, encoding: 'utf8' }).split('\0')
-  .filter((path) => /\.(md|mdx|markdown|txt|rst)$/i.test(path) && !ignored(path));
+  .filter((path) => /\.(md|mdx|markdown|txt|rst)$/i.test(path) && path !== own && !ignored(path));
 
 // Blank out what is not prose: inline code, link targets, URLs and HTML tags.
 // Identifiers and addresses follow their own rules; a path that names a
@@ -64,10 +66,11 @@ function prose(line) {
 }
 
 // The longest hyphen-joined run of segments that is a repository name wins, so
-// logos-db is one name while Bitwire-based still flags Bitwire.
+// logos-db is one name while Bitwire-based still flags Bitwire. An underscore
+// belongs to its word: shelm_archive is one word, not SHELM.
 function findings(masked) {
   const found = [];
-  for (const token of masked.matchAll(/[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*/g)) {
+  for (const token of masked.matchAll(/[A-Za-z0-9_]+(?:-[A-Za-z0-9_]+)*/g)) {
     const segments = token[0].split('-');
     let offset = token.index;
     for (let i = 0; i < segments.length;) {

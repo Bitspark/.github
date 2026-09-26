@@ -38,7 +38,7 @@ The organization is written as GitHub writes it: **Bitspark**.
 ## Details
 
 - **Sentence starts stay as the name.** Write "bitwire holds the contract.",
-  not "Bitwire holds the contract.".
+  not `Bitwire holds the contract.`
 - **Possessives and plurals attach to the unchanged name:** "bitwire's
   contract", "two nightseam peers".
 - **Identifiers follow their language, not this rule.** A Go type `Logos`, a
