@@ -66,6 +66,24 @@ repositories that once had capitals (`BitMachine`, `Stack`, `SHELM`, `BIoT`,
   written as their own specification defines them: `bitwire/1`,
   `nightseam.duplex/1`, `@nightseam/runtime`.
 
+## The one exception: Slang
+
+**Slang**, the programming language and the product built on it, keeps its
+capital S in prose ("Welcome to Slang", "a Slang program"). The owner decided
+this on 27 September 2026
+([slang-ecosystem decision 0007](https://github.com/Bitspark/slang-ecosystem/blob/main/docs/decisions/0007-repository-names.md#writing-the-names)).
+
+The exception covers only the name of the language and product:
+
+- **Its repositories follow the rule.** Write `slang` for the engine
+  repository, and `slang-design`, `slang-editor`, `slang-studio`,
+  `slang-infra` for the others.
+- **Its components follow the rule too.** A Slang component is written as its
+  lowercase repository name. It has no separate product name, so write
+  `slang-design`, not "Slang Design".
+- **The wordmark is unchanged.** The logo's lowercase `slang` wordmark is
+  artwork, not prose.
+
 ## Checking it
 
 [`naming/naming.mjs`](naming/naming.mjs) checks a repository's Markdown and
