@@ -19,7 +19,8 @@ const snapshot = join(here, 'bitspark-repositories.txt');
 
 // Repository names that are also ordinary words or external products. The rule
 // applies to them, but prose cannot tell "stack" the word from Stack the
-// repository, so the check does not flag them.
+// repository, so the check does not flag them. `slang` is also the one stated
+// exception: Slang, the language and product, keeps its capital (NAMING.md).
 const ordinaryWords = new Set([
   'arche', 'atlas', 'constellation', 'corpus', 'design', 'dm', 'fieldtest', 'foundry',
   'graph', 'prism', 'radial', 'refile', 'schema', 'slang', 'stack', 'taxis', 'weft',
